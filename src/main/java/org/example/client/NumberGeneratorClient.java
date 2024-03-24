@@ -14,6 +14,11 @@ public class NumberGeneratorClient {
     private final NumberGeneratorGrpc.NumberGeneratorStub stub;
     private int lastNumber = 0;
 
+    public static void main(String[] args) {
+        NumberGeneratorClient client = new NumberGeneratorClient("localhost", 8084);
+        client.generateNumbers(0, 30);
+    }
+
     /**
      * Конструктор канала передачи данных.
      *
@@ -47,7 +52,8 @@ public class NumberGeneratorClient {
 
             @Override
             public void onNext(NumberGeneratorOuterClass.NumberResponse response) {
-                lastNumber = response.getValue();
+                if (response.getValue() > lastNumber)
+                    lastNumber = response.getValue();
                 System.out.println("число от сервера: " + lastNumber);
             }
 
@@ -68,11 +74,6 @@ public class NumberGeneratorClient {
                 latch.countDown(); // Уменьшаем счетчик для завершения ожидания
             }
         });
-        try {
-            latch.await(); // Ожидаем завершения ответов от сервера
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         int currentValue = 0;
         while (currentValue <= 50) {
             System.out.println("currentValue: " + currentValue);
@@ -83,14 +84,23 @@ public class NumberGeneratorClient {
                 e.printStackTrace();
             }
         }
-        channel.shutdown();
-    }
 
-    public static class ClientApp {
-        public static void main(String[] args){
-            NumberGeneratorClient client = new NumberGeneratorClient("localhost", 8084);
-                    client.generateNumbers(0, 30);
+        try {
+            latch.await(); // Ожидаем завершения ответов от сервера
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
+        channel.shutdown();
 
     }
 }
+
+
+
+
+
+
+
+
+
+
