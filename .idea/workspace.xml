@@ -5,10 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9d943256-af6e-4536-9534-774c0ccdd211" name="Changes" comment="Starting the server in the main stream.">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/ClientApp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/client/NumberGeneratorClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ServerApp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/client/NumberGeneratorClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/client/NumberGeneratorClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/server/NumberGenerationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/server/NumberGenerationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/server/NumberGeneratorServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/server/NumberGeneratorServer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,13 +63,13 @@
       <recent name="org.example.server" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ClientApp">
+  <component name="RunManager" selected="Application.org.example.ClientApp">
     <configuration name="ClientApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.example.ClientApp" />
+      <option name="MAIN_CLASS_NAME" value="org.example.client.ClientApp" />
       <module name="App_gRPC" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.example.*" />
+          <option name="PATTERN" value="org.example.client.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -80,7 +82,20 @@
       <module name="App_gRPC" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.example.*" />
+          <option name="PATTERN" value="org.example.client.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NumberGeneratorServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.server.NumberGeneratorServer" />
+      <module name="App_gRPC" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.server.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -90,6 +105,19 @@
     </configuration>
     <configuration name="ServerApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.ServerApp" />
+      <module name="App_gRPC" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.client.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="org.example.ClientApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.ClientApp" />
       <module name="App_gRPC" />
       <extension name="coverage">
         <pattern>
@@ -103,9 +131,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.org.example.ClientApp" />
+        <item itemvalue="Application.NumberGeneratorServer" />
         <item itemvalue="Application.ClientApp" />
-        <item itemvalue="Application.ServerApp" />
-        <item itemvalue="Application.Main" />
         <item itemvalue="Application.ServerApp" />
         <item itemvalue="Application.Main" />
       </list>

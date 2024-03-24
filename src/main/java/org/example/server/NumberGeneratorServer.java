@@ -59,4 +59,20 @@ public class NumberGeneratorServer {
             server.awaitTermination();
         }
     }
+    public static void main(String[] args) throws IOException, InterruptedException {
+
+        NumberGeneratorServer server = new NumberGeneratorServer();
+        try {
+            server.start();
+            server.blockUntilShutdown();
+        } catch (IOException e) {
+            System.err.println("Error occurred while starting the server: " + e.getMessage());
+        } catch (InterruptedException e) {
+            System.err.println("Server interrupted: " + e.getMessage());
+            Thread.currentThread().interrupt();
+        } finally {
+            server.stop();
+            System.out.println("The server operation is completed.");
+        }
+    }
 }

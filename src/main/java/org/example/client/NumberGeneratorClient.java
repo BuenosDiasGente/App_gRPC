@@ -7,6 +7,7 @@ import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.stub.StreamObserver;
 
+import java.util.concurrent.CountDownLatch;
 
 public class NumberGeneratorClient {
     private final ManagedChannel channel;
@@ -19,7 +20,6 @@ public class NumberGeneratorClient {
      * @param host
      * @param port
      */
-
     public NumberGeneratorClient(String host, int port) {
         channel = ManagedChannelBuilder.forAddress(host, port)
                 .usePlaintext()
@@ -29,18 +29,22 @@ public class NumberGeneratorClient {
 
 
     /**
-     * Метод формирования запроса к серверу
+     * Метод формирует запрос к серверу.
+     * Используем счетчик CountDownLatch для ожидания завершения всех ответов от сервера.
      *
      * @param firstValue
      * @param lastValue
      */
-
     public void generateNumbers(int firstValue, int lastValue) {
+
+        CountDownLatch latch = new CountDownLatch(1);
+
         NumberGeneratorOuterClass.NumberRequest request = NumberGeneratorOuterClass.NumberRequest.newBuilder()
                 .setFirstValue(firstValue)
                 .setLastValue(lastValue)
                 .build();
         stub.generateNumbers(request, new StreamObserver<NumberGeneratorOuterClass.NumberResponse>() {
+
             @Override
             public void onNext(NumberGeneratorOuterClass.NumberResponse response) {
                 lastNumber = response.getValue();
@@ -49,8 +53,8 @@ public class NumberGeneratorClient {
 
             @Override
             public void onError(Throwable throwable) {
-
                 throwable.printStackTrace();
+                latch.countDown();
             }
 
 
@@ -61,17 +65,32 @@ public class NumberGeneratorClient {
              */
             @Override
             public void onCompleted() {
-                int currentValue = 0;
-                while (currentValue <= 50) {
-                    System.out.println("currentValue: " + currentValue);
-                    currentValue = currentValue + lastNumber + 1;
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
+                latch.countDown(); // Уменьшаем счетчик для завершения ожидания
             }
         });
+        try {
+            latch.await(); // Ожидаем завершения ответов от сервера
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        int currentValue = 0;
+        while (currentValue <= 50) {
+            System.out.println("currentValue: " + currentValue);
+            currentValue = currentValue + lastNumber + 1;
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        channel.shutdown();
+    }
+
+    public static class ClientApp {
+        public static void main(String[] args){
+            NumberGeneratorClient client = new NumberGeneratorClient("localhost", 8084);
+                    client.generateNumbers(0, 30);
+        }
+
     }
 }
