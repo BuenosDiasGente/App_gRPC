@@ -14,7 +14,6 @@ public class NumberGeneratorServer {
     /**
      * Метод обеспечивает запуск сервера gRPC на указанном порту
      * и корректную его остановку при завершении программы или прерывании JVM.
-     *
      * Добавляется хук Runtime.getRuntime().addShutdownHook(),
      * который будет выполнен при завершении программы или прерывании JVM.
      *
@@ -59,6 +58,7 @@ public class NumberGeneratorServer {
             server.awaitTermination();
         }
     }
+
     public static void main(String[] args) throws IOException, InterruptedException {
 
         NumberGeneratorServer server = new NumberGeneratorServer();

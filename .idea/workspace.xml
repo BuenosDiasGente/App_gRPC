@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9d943256-af6e-4536-9534-774c0ccdd211" name="Changes" comment="Starting the server in the main stream.">
+    <list default="true" id="9d943256-af6e-4536-9534-774c0ccdd211" name="Changes" comment="Exception handling in the NumberGeneratorServer.java">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ServerApp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ClientApp.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/client/NumberGeneratorClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/client/NumberGeneratorClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/server/NumberGenerationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/server/NumberGenerationService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/server/NumberGeneratorServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/server/NumberGeneratorServer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -63,9 +62,9 @@
       <recent name="org.example.server" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.org.example.ClientApp">
-    <configuration name="ClientApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.example.client.ClientApp" />
+  <component name="RunManager" selected="Application.NumberGeneratorClient">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.Main" />
       <module name="App_gRPC" />
       <extension name="coverage">
         <pattern>
@@ -77,8 +76,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.example.Main" />
+    <configuration name="NumberGeneratorClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.client.NumberGeneratorClient" />
       <module name="App_gRPC" />
       <extension name="coverage">
         <pattern>
@@ -131,9 +130,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.org.example.ClientApp" />
+        <item itemvalue="Application.NumberGeneratorClient" />
         <item itemvalue="Application.NumberGeneratorServer" />
-        <item itemvalue="Application.ClientApp" />
+        <item itemvalue="Application.org.example.ClientApp" />
         <item itemvalue="Application.ServerApp" />
         <item itemvalue="Application.Main" />
       </list>
